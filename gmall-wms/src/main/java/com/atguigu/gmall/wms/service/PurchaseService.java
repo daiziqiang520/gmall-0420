@@ -1,21 +1,20 @@
-package com.atguigu.gmall.pms.service;
+package com.atguigu.gmall.wms.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.atguigu.gmall.common.bean.PageResultVo;
 import com.atguigu.gmall.common.bean.PageParamVo;
-import com.atguigu.gmall.pms.entity.SkuEntity;
+import com.atguigu.gmall.wms.entity.PurchaseEntity;
 
-import java.util.List;
 import java.util.Map;
 
 /**
- * sku信息
+ * 采购信息
  *
  * @author qiangge
  * @email 23884280@qq.com
- * @date 2020-09-21 19:24:55
+ * @date 2020-09-22 21:22:27
  */
-public interface SkuService extends IService<SkuEntity> {
+public interface PurchaseService extends IService<PurchaseEntity> {
 
     PageResultVo queryPage(PageParamVo paramVo);
 }

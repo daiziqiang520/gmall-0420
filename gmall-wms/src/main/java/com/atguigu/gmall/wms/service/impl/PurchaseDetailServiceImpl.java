@@ -1,9 +1,6 @@
-package com.atguigu.gmall.pms.service.impl;
+package com.atguigu.gmall.wms.service.impl;
 
-import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -11,21 +8,22 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.atguigu.gmall.common.bean.PageResultVo;
 import com.atguigu.gmall.common.bean.PageParamVo;
 
-import com.atguigu.gmall.pms.mapper.SkuMapper;
-import com.atguigu.gmall.pms.entity.SkuEntity;
-import com.atguigu.gmall.pms.service.SkuService;
+import com.atguigu.gmall.wms.mapper.PurchaseDetailMapper;
+import com.atguigu.gmall.wms.entity.PurchaseDetailEntity;
+import com.atguigu.gmall.wms.service.PurchaseDetailService;
 
 
-@Service("skuService")
-public class SkuServiceImpl extends ServiceImpl<SkuMapper, SkuEntity> implements SkuService {
+@Service("purchaseDetailService")
+public class PurchaseDetailServiceImpl extends ServiceImpl<PurchaseDetailMapper, PurchaseDetailEntity> implements PurchaseDetailService {
 
     @Override
     public PageResultVo queryPage(PageParamVo paramVo) {
-        IPage<SkuEntity> page = this.page(
+        IPage<PurchaseDetailEntity> page = this.page(
                 paramVo.getPage(),
-                new QueryWrapper<SkuEntity>()
+                new QueryWrapper<PurchaseDetailEntity>()
         );
 
         return new PageResultVo(page);
     }
+
 }
