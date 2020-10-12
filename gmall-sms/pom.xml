@@ -12,10 +12,21 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>gmall-sms</name>
     <description>谷粒商城营销系统管理系统</description>
-
-
-
     <dependencies>
+        <dependency>
+            <groupId>com.atguigu</groupId>
+            <artifactId>gmall-sms-interface</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-alibaba-seata</artifactId>
+        </dependency>
+        <dependency>
+        <groupId>io.seata</groupId>
+        <artifactId>seata-all</artifactId>
+        <version>1.2.0</version>
+        </dependency>
         <!--引入公共依赖-->
         <dependency>
             <groupId>com.atguigu</groupId>

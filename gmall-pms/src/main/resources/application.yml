@@ -12,3 +12,15 @@ mybatis-plus:
 logging:
   level:
     com.atguigu.gmall: debug
+spring:
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: gmall_tx_group
+  rabbitmq:
+    host: 192.168.175.129
+    virtual-host: /qiangge
+    username: dzq951228
+    password: dzq951228
+    publisher-confirm-type: correlated
+    publisher-returns: true

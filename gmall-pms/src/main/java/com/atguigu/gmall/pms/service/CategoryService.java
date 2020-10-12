@@ -1,12 +1,11 @@
 package com.atguigu.gmall.pms.service;
 
-import com.baomidou.mybatisplus.extension.service.IService;
-import com.atguigu.gmall.common.bean.PageResultVo;
 import com.atguigu.gmall.common.bean.PageParamVo;
+import com.atguigu.gmall.common.bean.PageResultVo;
 import com.atguigu.gmall.pms.entity.CategoryEntity;
+import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * 商品三级分类
@@ -20,5 +19,9 @@ public interface CategoryService extends IService<CategoryEntity> {
     PageResultVo queryPage(PageParamVo paramVo);
 
     List<CategoryEntity> queryCategories(Long parentId);
+
+    List<CategoryEntity> queryCategoryLev2WithSubs(Long parentId);
+
+    List<CategoryEntity> queryLev3CategoryAndLev2CategoryAndLev1CategoryByLev3CategoryId(Long c3id);
 }
 

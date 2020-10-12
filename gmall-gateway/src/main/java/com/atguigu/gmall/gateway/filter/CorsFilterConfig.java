@@ -3,7 +3,6 @@ package com.atguigu.gmall.gateway.filter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 /*如果服务器允许跨域，需要在返回的响应头中携带下面信息：
@@ -36,6 +35,9 @@ public class CorsFilterConfig {
         config.addAllowedHeader("*");
         //可接受的域，为了将来能够携带cookie，不能配置为*
         config.addAllowedOrigin("http://manager.gmall.com");
+        config.addAllowedOrigin("http://www.gmall.com");
+        config.addAllowedOrigin("http://index.gmall.com");
+        config.addAllowedOrigin("http://gmall.com");
         //允许访问的方式
         config.addAllowedMethod("*");
         corsConfigurationSource.registerCorsConfiguration("/**", config);

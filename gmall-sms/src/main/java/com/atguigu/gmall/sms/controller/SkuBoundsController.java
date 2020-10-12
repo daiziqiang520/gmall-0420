@@ -1,23 +1,18 @@
 package com.atguigu.gmall.sms.controller;
 
-import java.util.List;
-
+import com.atguigu.gmall.common.bean.PageParamVo;
+import com.atguigu.gmall.common.bean.PageResultVo;
+import com.atguigu.gmall.common.bean.ResponseVo;
+import com.atguigu.gmall.sms.entity.SkuBoundsEntity;
+import com.atguigu.gmall.sms.service.SkuBoundsService;
+import com.atguigu.gmall.sms.vo.ItemSaleVo;
+import com.atguigu.gmall.sms.vo.SkuSaleVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.atguigu.gmall.sms.entity.SkuBoundsEntity;
-import com.atguigu.gmall.sms.service.SkuBoundsService;
-import com.atguigu.gmall.common.bean.PageResultVo;
-import com.atguigu.gmall.common.bean.ResponseVo;
-import com.atguigu.gmall.common.bean.PageParamVo;
+import java.util.List;
 
 /**
  * 商品spu积分设置
@@ -34,6 +29,18 @@ public class SkuBoundsController {
     @Autowired
     private SkuBoundsService skuBoundsService;
 
+    //根据skuId查询营销信息
+    @GetMapping("querySkuSaleBySkuId/{skuId}")
+    public ResponseVo<List<ItemSaleVo>> querySkuSaleBySkuId(@PathVariable("skuId")Long skuId){
+       List<ItemSaleVo> skuSaleVos = this.skuBoundsService.querySkuSaleBySkuId(skuId);
+       return ResponseVo.ok(skuSaleVos);
+    }
+
+    @PostMapping("save")
+    public ResponseVo saveSales(@RequestBody SkuSaleVo skuSaleVo){
+       this.skuBoundsService.saveSales(skuSaleVo);
+       return ResponseVo.ok();
+    }
     /**
      * 列表
      */
@@ -64,7 +71,6 @@ public class SkuBoundsController {
     @ApiOperation("保存")
     public ResponseVo<Object> save(@RequestBody SkuBoundsEntity skuBounds){
 		skuBoundsService.save(skuBounds);
-
         return ResponseVo.ok();
     }
 

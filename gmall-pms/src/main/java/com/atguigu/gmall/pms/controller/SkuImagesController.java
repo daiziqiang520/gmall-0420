@@ -1,23 +1,16 @@
 package com.atguigu.gmall.pms.controller;
 
-import java.util.List;
-
+import com.atguigu.gmall.common.bean.PageParamVo;
+import com.atguigu.gmall.common.bean.PageResultVo;
+import com.atguigu.gmall.common.bean.ResponseVo;
+import com.atguigu.gmall.pms.entity.SkuImagesEntity;
+import com.atguigu.gmall.pms.service.SkuImagesService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.atguigu.gmall.pms.entity.SkuImagesEntity;
-import com.atguigu.gmall.pms.service.SkuImagesService;
-import com.atguigu.gmall.common.bean.PageResultVo;
-import com.atguigu.gmall.common.bean.ResponseVo;
-import com.atguigu.gmall.common.bean.PageParamVo;
+import java.util.List;
 
 /**
  * sku图片
@@ -33,6 +26,13 @@ public class SkuImagesController {
 
     @Autowired
     private SkuImagesService skuImagesService;
+
+    //根据skuId查询sku图片信息
+    @GetMapping("querySkuImagesBySkuId/{skuId}")
+    public ResponseVo<List<SkuImagesEntity>> querySkuImagesBySkuId(@PathVariable("skuId")Long skuId){
+        List<SkuImagesEntity> skuImagesEntities = this.skuImagesService.querySkuImagesBySkuId(skuId);
+        return ResponseVo.ok(skuImagesEntities);
+    }
 
     /**
      * 列表
